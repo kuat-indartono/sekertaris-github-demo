@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sekretaris Bot - AI Assistant</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #475569;
+      --primary: #2563eb; --primary-hover: #1d4ed8; --border: #e2e8f0;
+      --danger-bg: #fef2f2; --danger-txt: #991b1b; --success-bg: #f0fdf4; --success-txt: #166534;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 20px 12px; }
+    .container { max-width: 850px; margin: 0 auto; }
+    
+    /* Hero Section */
+    .hero { text-align: center; padding: 40px 20px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 24px; }
+    .badge { display: inline-block; background: #dcfce7; color: #15803d; font-weight: 600; font-size: 0.85rem; padding: 4px 12px; border-radius: 99px; margin-bottom: 12px; }
+    .avatar { font-size: 3.5rem; margin-bottom: 8px; }
+    h1 { font-size: 2rem; margin-bottom: 8px; color: var(--text); }
+    .tagline { color: var(--muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+    /* Problem & Solution */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
+    .card-chaos { background: var(--danger-bg); border-color: #fecaca; color: var(--danger-txt); }
+    .card-chaos h3 { color: #991b1b; margin-bottom: 12px; }
+    .card-solution { background: var(--success-bg); border-color: #bbf7d0; color: var(--success-txt); }
+    .card-solution h3 { color: #166534; margin-bottom: 12px; }
+    ul { list-style: none; }
+    li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; font-size: 0.95rem; }
+
+    /* Capabilities */
+    .capabilities { margin-bottom: 24px; }
+    .section-title { text-align: center; font-size: 1.3rem; margin-bottom: 16px; font-weight: 700; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .cap-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .cap-card h4 { margin: 8px 0 4px; color: var(--primary); }
+    .cap-card p { font-size: 0.88rem; color: var(--muted); }
+
+    /* Interactive Simulation */
+    .sim-section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+    .sim-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn-sim { background: var(--bg); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: 0.2s; }
+    .btn-sim:hover { border-color: var(--primary); color: var(--primary); }
+    .chat-box { background: #f1f5f9; border-radius: 8px; padding: 16px; min-height: 140px; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+    .msg { padding: 8px 12px; border-radius: 8px; max-width: 85%; }
+    .msg-user { background: var(--primary); color: white; align-self: flex-end; }
+    .msg-bot { background: white; color: var(--text); border: 1px solid var(--border); align-self: flex-start; }
+    .typing { font-style: italic; color: var(--muted); font-size: 0.8rem; }
+
+    /* Footer & CTA */
+    .cta-container { text-align: center; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+    .btn-cta { display: inline-block; background: var(--primary); color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; transition: 0.2s; }
+    .btn-cta:hover { background: var(--primary-hover); }
+    footer { margin-top: 16px; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- 1. Hero Section -->
+    <section class="hero">
+      <span class="badge">🟢 Status: Active & Ready 24/7</span>
+      <div class="avatar">🤖💼</div>
+      <h1>Sekretaris Bot</h1>
+      <p class="tagline">Asisten digital handal untuk merangkum hasil rapat, mengelola tugas harian, dan merapikan dokumen kerja Anda secara otomatis.</p>
+    </section>
+
+    <!-- 2. Problem & Solution -->
+    <section class="grid-2">
+      <div class="card card-chaos">
+        <h3>❌ The Chaos</h3>
+        <ul>
+          <li>❌ Sering lupa daftar tugas harian yang harus dikerjakan.</li>
+          <li>❌ Tidak sempat membuat dan mencatat notulen rapat.</li>
+          <li>❌ Banyak file pekerjaan tercecer dan tidak terorganisasi.</li>
+        </ul>
+      </div>
+      <div class="card card-solution">
+        <h3>✅ The Solution</h3>
+        <ul>
+          <li>✅ Notulensi otomatis dari hasil diskusi Google Meet.</li>
+          <li>✅ Pengingat tugas harian langsung terkirim via Email.</li>
+          <li>✅ File tersusun rapi dengan mekanisme Human-in-the-Loop.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Core Capabilities -->
+    <section class="capabilities">
+      <h2 class="section-title">Fitur & Integrasi Utama</h2>
+      <div class="grid-3">
+        <div class="cap-card">
+          <span>📹 Google Meet</span>
+          <h4>Notulensi Otomatis</h4>
+          <p>Merekam dan merangkum poin-poin penting serta action item dari rapat Anda tanpa ada yang terlewat.</p>
+        </div>
+        <div class="cap-card">
+          <span>📧 Email Reminder</span>
+          <h4>Pengingat Tugas</h4>
+          <p>Mengirimkan jadwal dan reminder agenda harian langsung ke kotak masuk email Anda tepat waktu.</p>
+        </div>
+        <div class="cap-card">
+          <span>📂 Human-in-the-Loop</span>
+          <h4>Manajemen File</h4>
+          <p>Merapikan dokumen kerja yang tercecer dan selalu meminta persetujuan (approval) Anda sebelum diarsip.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Simulation -->
+    <section class="sim-section">
+      <h2 class="section-title">Simulasi Interaktif</h2>
+      <div class="sim-buttons">
+        <button class="btn-sim" onclick="runSim(1)">1. Rangkum Rapat</button>
+        <button class="btn-sim" onclick="runSim(2)">2. Kirim Reminder</button>
+        <button class="btn-sim" onclick="runSim(3)">3. Rapikan File</button>
+      </div>
+      <div class="chat-box" id="chatBox">
+        <div class="msg msg-bot">Klik salah satu tombol skenario di atas untuk mencoba aksi Sekretaris Bot.</div>
+      </div>
+    </section>
+
+    <!-- 5. Footer & CTA -->
+    <section class="cta-container">
+      <h3>Siap Mempermudah Pekerjaan Anda?</h3>
+      <p style="margin-bottom: 16px; color: var(--muted); font-size: 0.9rem;">Hubungi atau integrasikan Sekretaris Bot sekarang via WhatsApp.</p>
+      <a href="https://wa.me/6281250375" target="_blank" class="btn-cta">Hubungi via WhatsApp (081250375)</a>
+      <footer>Built with AI · AI Builder Bootcamp Showcase</footer>
+    </section>
+
+  </div>
+
+  <script>
+    const scenarios = {
+      1: {
+        user: "Bot, tolong rangkum hasil rapat Google Meet tadi siang.",
+        bot: "Siap! Ini ringkasan rapat: 1) Client setuju proposal. 2) Deadline revisi hari Kamis. 3) Action item disajikan dalam ringkasan tersimpan."
+      },
+      2: {
+        user: "Ingatkan tugas harian saya untuk hari ini.",
+        bot: "Pengingat terkirim! 📩 Saya telah mengirimkan daftar 3 tugas prioritas hari ini ke email Anda. Jangan lupa cek ya!"
+      },
+      3: {
+        user: "Tolong rapikan file laporan di folder Downloads.",
+        bot: "Saya menemukan 5 file laporan tercecer. Permintaan persetujuan (approval) telah dikirim. Setujui untuk memindahkan ke Drive/Laporan?"
+      }
+    };
+
+    function runSim(id) {
+      const box = document.getElementById('chatBox');
+      const data = scenarios[id];
+      box.innerHTML = `<div class="msg msg-user">${data.user}</div><div class="typing" id="typing">Sekretaris Bot sedang mengetik...</div>`;
+      
+      setTimeout(() => {
+        document.getElementById('typing').remove();
+        box.innerHTML += `<div class="msg msg-bot">${data.bot}</div>`;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
